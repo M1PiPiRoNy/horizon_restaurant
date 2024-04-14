@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Menu - nour's masterclasses</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Update Menu Page</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <form id="menuForm">
+                    <div class="form-group">
+                        <label for="itemName">Item Name:</label>
+                        <input type="text" class="form-control" id="itemName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemPrice">Item Price:</label>
+                        <input type="number" class="form-control" id="itemPrice" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemCategory">Category:</label>
+                        <input type="text" class="form-control" id="itemCategory" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemDescription">Description:</label>
+                        <input type="text" class="form-control" id="itemDescription" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemAllergy">Allergies:</label>
+                        <input type="text" class="form-control" id="itemAllergy" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="itemAvailability">Availability:</label>
+                        <input type="text" class="form-control" id="itemAvailability" required>
+                    </div>
+                    <button type="button" onclick="addItem()" class="btn btn-success">Add Item</button>
+                    <button type="button" onclick="updateItem()" class="btn btn-primary">Update Item</button>
+                    <button type="button" onclick="updateStatus()" class="btn btn-info">Update Status</button>
+                    <button type="button" onclick="deleteItem()" class="btn btn-danger">Delete Item</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h2>Menu Items</h2>
+                <div id="menuDisplay" style="height: 500px; overflow-y: auto; background: #f7f7f7; padding: 20px;">
+                    <!-- Dynamic area for displaying menu items -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        function addItem() {
+            const name = document.getElementById('itemName').value;
+            const price = document.getElementById('itemPrice').value;
+            const category = document.getElementById('itemCategory').value;
+            const description = document.getElementById('itemDescription').value;
+            const allergy = document.getElementById('itemAllergy').value;
+            const availability = document.getElementById('itemAvailability').value;
+
+            console.log('Adding item:', name, price, category, description, allergy, availability);
+            alert('Item added successfully!');
+            displayMenu(); // Refresh display
+        }
+
+        function updateItem() {
+            const name = document.getElementById('itemName').value;
+            console.log('Updating item:', name);
+            alert('Item updated successfully!');
+            displayMenu(); // Refresh display
+        }
+
+        function updateStatus() {
+            const name = document.getElementById('itemName').value;
+            const availability = document.getElementById('itemAvailability').value;
+            console.log('Updating status for:', name, 'to', availability);
+            alert('Status updated successfully!');
+            displayMenu(); // Refresh display
+        }
+
+        function deleteItem() {
+            const name = document.getElementById('itemName').value;
+            console.log('Deleting item:', name);
+            alert('Item deleted successfully!');
+            displayMenu(); // Refresh display
+        }
+
+        function displayMenu() {
+            // Here you would typically make an AJAX call to fetch menu data and update the DOM
+            // For now, we'll simulate with placeholder data
+            const menuDisplay = document.getElementById('menuDisplay');
+            menuDisplay.innerHTML = '<p>Displaying updated menu here...</p>'; // Placeholder content
+        }
+
+        // Simulate initial menu display
+        displayMenu();
+    </script>
+</body>
+</html>
