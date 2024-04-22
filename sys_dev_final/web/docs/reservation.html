@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation Management - nour's masterclasses</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./main.html"><img src="./img/logo.png"></a>
+    <button
+    class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+    aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active"> <a class="nav-link" href="./main.html">Welcome<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item"> <a class="nav-link" href="./menu.html">Today's Menu</a>
+                </li>
+                
+                <li class="nav-item"> <a class="nav-link" href="./article.html">about us </a>
+                </li>
+            </ul> 
+        </div>
+</nav>
+
+<body>
+<div class="block hero1 my-auto" style="background-image:url(abstract-blur-coffee-shop-cafe-interior_74190-6342.avif);">
+    <div  class="container" style="padding-top: 20px; ">
+        <h1>Reservation Management</h1>
+        <div id="actions">
+            <div class="form-row">
+                <div class="col">
+                    <label for="reservationId" >Reservation ID:</label>
+                    <input type="text" id="reservationId" style="font-size: 16px;" class="form-control">
+                </div>
+                <div class="col" style="font-size: 16px;">
+                    <label for="newTime"  >New Time:</label>
+                    <select id="newTime"  style="font-size: 16px;" class="form-control">
+                        <option>09:00</option>
+                        <option>10:00</option>
+                        <option>11:00</option>
+                        <option>12:00</option>
+                        <option>13:00</option>
+                        <option>14:00</option>
+                        <option>15:00</option>
+                        <option>16:00</option>
+                        <option>17:00</option>
+                        <option>18:00</option>
+                        <option>19:00</option>
+                        <option>20:00</option>
+                        <option>21:00</option>
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="newTable">New Table:</label>
+                    <select id="newTable" style="font-size: 16px;" class="form-control">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <!-- Add more tables as required -->
+                    </select>
+                </div>
+                <div class="col">
+                    <label for="newDate">New Date:</label>
+                    <input type="date" id="newDate" style="font-size: 16px;" class="form-control">
+                </div>
+            </div>
+            <button onclick="updateReservation()" class="btn btn-primary mt-3" style="font-size: 16px;">Update Reservation</button>
+            <button onclick="deleteReservation()" class="btn btn-danger mt-3" style="font-size: 16px;">Delete Reservation</button>
+        </div>
+        <div id="reservationDisplay" style="margin-top: 20px;">
+            <h2>Reservations</h2>
+            <!-- Placeholder for reservation data -->
+            <textarea id="displayArea" rows="10" class="form-control" style=" color: #212529; font-size: 16px;">
+                name                    Time                       Table                             Date
+                nour                    14:00                        1                              2022-03-20
+            </textarea>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function updateReservation() {
+            var id = document.getElementById('reservationId').value;
+            var time = document.getElementById('newTime').value;
+            var table = document.getElementById('newTable').value;
+            var date = document.getElementById('newDate').value;
+            // Simulate an AJAX request to update the reservation
+            console.log('Updating reservation ID ' + id + ' to new time ' + time + ', new table ' + table + ', new date ' + date);
+            alert('Reservation updated successfully!');
+        }
+
+        function deleteReservation() {
+            var id = document.getElementById('reservationId').value;
+            // Simulate an AJAX request to delete the reservation
+            console.log('Deleting reservation ID ' + id);
+            alert('Reservation deleted successfully!');
+        }
+    </script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        window.onload = function() {
+            var cookies = document.cookie.split(';').reduce(function(acc, cookieStr) {
+                var parts = cookieStr.split('=');
+                acc[decodeURIComponent(parts[0].trim())] = decodeURIComponent(parts[1].trim());
+                return acc;
+            }, {});
+        
+            var displayArea = document.getElementById('displayArea');
+            displayArea.value = 'Name: ' + cookies.name + '\nEmail: ' + cookies.email + 
+                '\nPhone: ' + cookies.phone + '\nTable: ' + cookies.table +
+                '\nGuests: ' + cookies.guests + '\nDate: ' + cookies.date;
+        }
+    </script>
+        
+
+</body>
+</html>
