@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Booking Form nour's masterclasses</title>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
+
+	
+</head>
+
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-white"> <a class="navbar-brand" href="./main.html"><img src="./img/logo.png"></a>
+	<button
+	class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+	aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active"> <a class="nav-link" href="./main.html">Welcome<span class="sr-only">(current)</span></a>
+				</li>
+				<li class="nav-item"> <a class="nav-link" href="./menu.html">Today's Menu</a>
+				</li>
+				
+				<li class="nav-item"> <a class="nav-link" href="./article.html">about us </a>
+				</li>
+			</ul>  
+		</div>
+</nav>
+
+<body>
+	<div id="booking" class="book_section">
+		<div class="book_section-center">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-5">
+						<div class="booking-cta">
+							<h1>Make your reservation</h1>
+							<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate laboriosam numquam at</p>
+						</div>
+					</div>
+					<div class="col-md-6 col-md-offset-1">
+						<div class="booking-form">
+							
+<form action="/make_reservation" method="post" >
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="text" name="name">
+											<span class="form-label">Name</span>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="email" name = "email">
+											<span class="form-label">Email</span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="tel" name="phone">
+											<span class="form-label">Phone</span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-6">
+										<div class="form-group">
+											<span class="form-label">table</span>
+											<select class="form-control" name = "table">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
+												<option>7</option>
+												<option>8</option>
+												<option>9</option>
+												<option>10</option>
+												<option>11</option>
+												<option>12</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+									<div class="col-md-3 col-sm-6">
+										<div class="form-group">
+											<span class="form-label">Guests</span>
+											<select class="form-control"  name = "guest">
+												<option>1 Person</option>
+												<option>2 People</option>
+												<option>3 People</option>
+												<option>4 People</option>
+												<option>5 People</option>
+												<option>6 People</option>
+											</select>
+											<span class="select-arrow"></span>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<input class="form-control" type="date" name="date" required>
+											<span class="form-label">Check In</span>
+										</div>
+									</div>
+									
+								</div>
+								<div class="form-btn">
+									<button class="submit-btn" type="submit">Book Now</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+    <script>
+		function saveFormData() {
+			try {
+				var name = document.querySelector('input[name="name"]').value;
+				var email = document.querySelector('input[name="email"]').value;
+				var phone = document.querySelector('input[name="phone"]').value;
+				var table = document.querySelector('select[name="table"]').value;
+				var guests = document.querySelector('select[name="guests"]').value;
+				var date = document.querySelector('input[name="date"]').value;
+	
+				document.cookie = "name=" + encodeURIComponent(name) + ";path=/";
+				document.cookie = "email=" + encodeURIComponent(email) + ";path=/";
+				document.cookie = "phone=" + encodeURIComponent(phone) + ";path=/";
+				document.cookie = "table=" + encodeURIComponent(table) + ";path=/";
+				document.cookie = "guests=" + encodeURIComponent(guests) + ";path=/";
+				document.cookie = "date=" + encodeURIComponent(date) + ";path=/";
+	
+				console.log("Cookies set successfully.");
+				return true; // proceed to submit the form
+			} catch (error) {
+				console.error("Failed to save form data:", error);
+				return false; // prevent form submission on error
+			}
+		}
+		</script>
+		
+
+	<script src="js/booking.min.js"></script>
+
+	<script>
+		$('.form-control').each(function () {
+			floatedLabel($(this));
+		});
+
+		$('.form-control').on('input', function () {
+			floatedLabel($(this));
+		});
+
+		function floatedLabel(input) {
+			var $field = input.closest('.form-group');
+			if (input.val()) {
+				$field.addClass('input-not-empty');
+			} else {
+				$field.removeClass('input-not-empty');
+			}
+		}
+	</script>
+	<footer class="block footer1 footer text-center">
+		<p>&copy; <a href="https://www.instagram.com/nour._err/">"nour's masterclasses"</a> by
+			nour</p>
+	</footer>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+	<script src="js/custom-general.js"></script>
+</body>
+
+</html>
